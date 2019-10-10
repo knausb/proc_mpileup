@@ -27,6 +27,7 @@ def read_bam(bams):
 #    f.closed
     return(read_data)
 
+
 def clean_filenames(file_names):
     """Clean filenames (remove path, extension)."""
     # https://stackoverflow.com/a/8384788
@@ -53,8 +54,8 @@ def summa_mpile(my_gz_file):
     """Read and summarize gzipped mpileup file."""
 #    print(len(my_sample_names))
     my_cols = list(range(3, 3 * (len(my_sample_names) + 1), 3))
-    print(my_cols)
-    my_input = np.loadtxt(my_gz_file, dtype = 'i', comments = '',
+#    print(my_cols)
+    my_input = np.loadtxt(my_gz_file, dtype = 'i', comments = None,
                           delimiter = '\t', usecols=my_cols)
 #    print(my_input)
 #    print("nparray shape:")
