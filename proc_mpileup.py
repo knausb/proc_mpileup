@@ -52,8 +52,9 @@ def mp_files(mypath):
 def summa_mpile(my_gz_file):
     """Read and summarize gzipped mpileup file."""
 #    print(len(my_sample_names))
-    my_cols = range(3, 3 * (len(my_sample_names) + 1), 3)
-#    print(my_cols)
+    my_max = 3 * (len(my_sample_names) + 1)
+    my_cols = range(3, my_max, 3)
+    print(my_cols)
     my_input = np.loadtxt(my_gz_file, dtype = 'i', comments = "",
                           delimiter = '\t', usecols=my_cols)
 #    print(my_input)
