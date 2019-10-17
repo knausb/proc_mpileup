@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#  !/usr/bin/env python
 
 # https://docs.python.org/3/tutorial/
 # https://docs.python.org/3/howto/argparse.html#id1
@@ -27,6 +27,7 @@ def read_bam(bams):
 #    f.closed
     return(read_data)
 
+
 def clean_filenames(file_names):
     """Clean filenames (remove path, extension)."""
     # https://stackoverflow.com/a/8384788
@@ -52,10 +53,9 @@ def mp_files(mypath):
 def summa_mpile(my_gz_file):
     """Read and summarize gzipped mpileup file."""
 #    print(len(my_sample_names))
-    my_max = 3 * (len(my_sample_names) + 1)
-    my_cols = range(3, my_max, 3)
-    print(my_cols)
-    my_input = np.loadtxt(my_gz_file, dtype = 'i', comments = "",
+    my_cols = list(range(3, 3 * (len(my_sample_names) + 1), 3))
+#    print(my_cols)
+    my_input = np.loadtxt(my_gz_file, dtype = 'i', comments = None,
                           delimiter = '\t', usecols=my_cols)
 #    print(my_input)
 #    print("nparray shape:")
