@@ -81,8 +81,9 @@ if args.verbose:
 my_bams = read_bam(args.bams)
 
 if args.verbose:
+    print("len(my_bams): ")
     print(len(my_bams))
-    print(my_bams[0])
+    print("my_bams[0]: " + my_bams[0])
 
 # Clean bam filenames.
 my_sample_names = clean_filenames(my_bams)
@@ -97,7 +98,9 @@ my_mp = mp_files(args.dir)
 my_locus_names = clean_filenames(my_mp)
 
 if args.verbose:
-    print(my_mp[1])
+    print("len(my_mp): ")
+    print(len(my_mp))
+#    print(my_mp[1])
 
 # Read and summarize gzipped files.
 count_df = pd.DataFrame(columns=[my_sample_names], index=[my_locus_names])
