@@ -57,15 +57,19 @@ def summa_mpile(my_gz_file):
 #    print(my_cols)
     my_input = np.loadtxt(my_gz_file, dtype = 'i', comments = None,
                           delimiter = '\t', usecols=my_cols)
-#    print(my_input)
-#    print("nparray shape:")
-#    print(my_input.shape)
-    my_colsums = my_input.sum(axis=0)
-    my_stds = my_input.std(axis=0)
-    my_input[ my_input > 0 ] = 1
-    my_nonzero = my_input.sum(axis=0)
-#    print(my_input.count_nonzero(axis=0))
-    return(my_colsums, my_stds, my_nonzero)
+    if my_input.size[0] > 0:
+#        print(my_input)
+#        print("nparray shape:")
+#        print(my_input.shape)
+        my_colsums = my_input.sum(axis=0)
+        my_stds = my_input.std(axis=0)
+        my_input[ my_input > 0 ] = 1
+        my_nonzero = my_input.sum(axis=0)
+#        print(my_input.count_nonzero(axis=0))
+        return(my_colsums, my_stds, my_nonzero)
+    else:
+        print(my_gz_file + " has zero rows.")
+        return(0)
 
 ##### ##### ##### ##### #####
 # Main.
