@@ -119,9 +119,12 @@ for i in range(0, len(my_mp)):
 #    print(my_summa[0])
 #    print(len(my_summa[0]))
 #    print(count_df.loc[my_locus_names[i], my_sample_names]) #= my_summa[0]
-    count_df.loc[my_locus_names[i], my_sample_names] = my_summa[0]
-    std_df.loc[my_locus_names[i], my_sample_names] = my_summa[1]
-    nonzero_df.loc[my_locus_names[i], my_sample_names] = my_summa[2]
+    if my_summa != 0:
+        count_df.loc[my_locus_names[i], my_sample_names] = my_summa[0]
+        std_df.loc[my_locus_names[i], my_sample_names] = my_summa[1]
+        nonzero_df.loc[my_locus_names[i], my_sample_names] = my_summa[2]
+    else:
+        break
 
 
 count_df.to_csv("counts.csv")
