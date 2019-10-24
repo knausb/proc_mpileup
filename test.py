@@ -3,17 +3,11 @@
 import numpy as np
 import pandas as pd
 
-my_cols = list(range(3, 3 * (99 + 1), 3))
+df = pd.DataFrame(columns=["name", "mask", "weapon"],
+                  index=["trait_10002", "trait_00003", "trait_00001"])
+df.loc["trait_10002"] = ["Raphael", "red", "sai"]
+df.loc["trait_00001"] = ["Donatello", "purple", "bo staff"]
+df.loc["trait_00003"] = ["Leo", "blue", "katana"]
 
-
-my_input = np.loadtxt("rep_pu/gypsy_00001.mpileup.gz", dtype = 'i', comments = None, delimiter = '\t', usecols=my_cols)
-
-
-my_input = np.loadtxt("rep_pu/gypsy_13810.mpileup.gz", dtype = 'i', comments = None, delimiter = '\t', usecols=my_cols)
-
-my_input = np.loadtxt("rep_pu/gypsy_40825.mpileup.gz", dtype = 'i', comments = None, delimiter = '\t', usecols=my_cols)
-
-#my_input = pd.read_csv("rep_pu/gypsy_00001.mpileup.gz", sep = "\t")
-#my_input = pd.read_csv("rep_pu/gypsy_13810.mpileup.gz", sep = "\t")
-
+df.to_csv("turtles.csv")
 
