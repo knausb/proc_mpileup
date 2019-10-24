@@ -57,7 +57,7 @@ def summa_mpile(my_gz_file):
 #    print(my_cols)
     my_input = np.loadtxt(my_gz_file, dtype = 'i', comments = None,
                           delimiter = '\t', usecols=my_cols)
-    if my_input.size[0] > 0:
+    if my_input.shape[0] > 0:
 #        print(my_input)
 #        print("nparray shape:")
 #        print(my_input.shape)
@@ -116,12 +116,17 @@ for i in range(0, len(my_mp)):
     if args.verbose:
         print("Working on: "+ my_mp[i])
     my_summa = summa_mpile(my_mp[i])
+#    print("Returned from summa")
+    if my_summa == 0:
+        print(my_mp[i])
+        print("summa equal to zero, handling empty file.")
+    else:
 #    print(my_summa[0])
 #    print(len(my_summa[0]))
 #    print(count_df.loc[my_locus_names[i], my_sample_names]) #= my_summa[0]
-    count_df.loc[my_locus_names[i], my_sample_names] = my_summa[0]
-    std_df.loc[my_locus_names[i], my_sample_names] = my_summa[1]
-    nonzero_df.loc[my_locus_names[i], my_sample_names] = my_summa[2]
+        count_df.loc[my_locus_names[i], my_sample_names] = my_summa[0]
+        std_df.loc[my_locus_names[i], my_sample_names] = my_summa[1]
+        nonzero_df.loc[my_locus_names[i], my_sample_names] = my_summa[2]
 
 
 count_df.to_csv("counts.csv")
