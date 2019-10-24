@@ -72,7 +72,10 @@ def summa_mpile(my_gz_file):
         return(0)
 
 ##### ##### ##### ##### #####
+#
 # Main.
+#
+##### ##### ##### ##### #####
 
 if args.verbose:
     print("verbosity turned on")
@@ -89,15 +92,16 @@ if args.verbose:
     print(len(my_bams))
     print("my_bams[0]: " + my_bams[0])
 
-# Clean bam filenames.
-my_sample_names = clean_filenames(my_bams)
 
+# Clean bam filenames to get sample names.
+my_sample_names = clean_filenames(my_bams)
 
 if args.verbose:
     for i in my_sample_names:
         print(i)
 
-# Read directory of gzipped mpileup files.
+
+# Read directory of gzipped mpileup files to get names.
 my_mp = mp_files(args.dir)
 my_locus_names = clean_filenames(my_mp)
 
@@ -106,11 +110,15 @@ if args.verbose:
     print(len(my_mp))
 #    print(my_mp[1])
 
-# Read and summarize gzipped files.
+
+# Initialize data structures.
+# https://pandas.pydata.org/pandas-docs/stable/getting_started/dsintro.html#dataframe
 count_df = pd.DataFrame(columns=[my_sample_names], index=[my_locus_names])
 std_df = pd.DataFrame(columns=[my_sample_names], index=[my_locus_names])
 nonzero_df = pd.DataFrame(columns=[my_sample_names], index=[my_locus_names])
 #print(count_df)
+
+# Read and summarize gzipped files.
 
 for i in range(0, len(my_mp)):
     if args.verbose:
@@ -129,10 +137,10 @@ for i in range(0, len(my_mp)):
         nonzero_df.loc[my_locus_names[i], my_sample_names] = my_summa[2]
 
 
+# Print to file.
 count_df.to_csv("counts.csv")
 std_df.to_csv("std.csv")
 nonzero_df.to_csv("nonzero.csv")
-
 
 
 ##### ##### ##### ##### #####
