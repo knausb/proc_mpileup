@@ -121,8 +121,8 @@ nonzero_df = pd.DataFrame(columns=[my_sample_names], index=[my_locus_names])
 # Read and summarize gzipped files.
 
 for i in range(0, len(my_mp)):
-    if args.verbose:
-        print("Working on: "+ my_mp[i])
+#    if args.verbose:
+#        print("Working on: "+ my_mp[i])
     my_summa = summa_mpile(my_mp[i])
 #    print("Returned from summa")
     if my_summa == 0:
@@ -138,9 +138,14 @@ for i in range(0, len(my_mp)):
 
 
 # Print to file.
-count_df.to_csv("counts.csv")
-std_df.to_csv("std.csv")
-nonzero_df.to_csv("nonzero.csv")
+# The method .to_csv appears to sort the index (row names) but not the rows.
+# To address this, let's sort the rows by index.
+count_df.sort_index(inplace = True)
+count_df.to_csv("counts.csv", na_rep = "NA")
+std_df.sort_index(inplace = True)
+std_df.to_csv("std.csv", na_rep = "NA")
+nonzero_df.sort_index(inplace = True)
+nonzero_df.to_csv("nonzero.csv", na_rep = "NA")
 
 
 ##### ##### ##### ##### #####
