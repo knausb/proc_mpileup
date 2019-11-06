@@ -118,6 +118,12 @@ std_df = pd.DataFrame(columns=[my_sample_names], index=[my_locus_names])
 nonzero_df = pd.DataFrame(columns=[my_sample_names], index=[my_locus_names])
 #print(count_df)
 
+
+if args.verbose:
+    print("Return data structure initialized. Dimensions below.")
+    print(count_df.shape)
+
+
 # Read and summarize gzipped files.
 
 for i in range(0, len(my_mp)):
