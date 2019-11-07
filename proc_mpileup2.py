@@ -18,6 +18,8 @@ parser.add_argument("-v", "--verbose", help="increase output verbosity",
                     
 args = parser.parse_args()
 
+# args = ["bams.txt", "rep_pu/", "TRUE"]
+
 ##### ##### ##### ##### #####
 # Functions
 
