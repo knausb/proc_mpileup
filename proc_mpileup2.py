@@ -5,10 +5,10 @@
 # https://docs.scipy.org/doc/numpy/user/quickstart.html
 
 import argparse
-import numpy as np
-import pandas as pd
-import ntpath
 import os
+import ntpath
+#import numpy as np
+#import pandas as pd
 
 parser = argparse.ArgumentParser(description='Process gzipped samtools mpileup output.')
 parser.add_argument("bams", help="Text file of bam files, one file per line.")
