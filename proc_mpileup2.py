@@ -23,6 +23,7 @@ args = parser.parse_args()
 ##### ##### ##### ##### #####
 # Functions
 
+
 def read_bam(bams):
     """Read in the list of bam files."""
     with open(bams) as f:
@@ -95,14 +96,10 @@ for i in range(len(my_mp)):
     print(my_mp[i] + "  " + my_locus_names[i])
 
 # Initialize data structures.
-# https://pandas.pydata.org/pandas-docs/stable/getting_started/dsintro.html#dataframe
-count_df   = pd.DataFrame(columns=[my_sample_names], index=[my_locus_names])
-std_df     = pd.DataFrame(columns=[my_sample_names], index=[my_locus_names])
-nonzero_df = pd.DataFrame(columns=[my_sample_names], index=[my_locus_names])
 
+my_nonzeros = [ [] for i in range(len(my_sample_names)) ]
 
-
-
+print(my_nonzeros)
 
 ##### ##### ##### ##### #####
 # EOF.
